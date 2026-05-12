@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_picking_form_cs_residential" model="ir.ui.view">
+            <field name="name">stock.picking.form.equilibrium.residential</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='other_infos']" position="inside">
+                    <field name="cs_resident_id"/>
+                    <field name="cs_cleaning_zone"/>
+                    <field name="cs_responsible_signature" widget="image" class="oe_avatar"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
