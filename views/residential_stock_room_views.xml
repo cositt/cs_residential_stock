@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cs_room_view_form_residential_stock" model="ir.ui.view">
+        <field name="name">cs.room.form.residential.stock</field>
+        <field name="model">cs.room</field>
+        <field name="inherit_id" ref="cs_resident.room_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <div class="oe_button_box" name="button_box">
+                    <button
+                        name="action_open_room_stock_quants"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-archive"
+                        groups="stock.group_stock_user"
+                        invisible="not stock_location_id"
+                    >
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Stock</span>
+                            <span class="o_stat_text">habitación</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="//group[field[@name='capacidad']]" position="after">
+                <group string="Almacén habitación" groups="stock.group_stock_user">
+                    <field name="stock_location_id"/>
+                    <button
+                        name="action_generate_room_stock_location"
+                        string="Generar ubicación de stock"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="stock_location_id"
+                        colspan="2"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="cs_room_view_list_residential_stock" model="ir.ui.view">
+        <field name="name">cs.room.list.residential.stock</field>
+        <field name="model">cs.room</field>
+        <field name="inherit_id" ref="cs_resident.room_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[@name='state']" position="after">
+                <field name="stock_location_id" optional="hide" groups="stock.group_stock_user"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

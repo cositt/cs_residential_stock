@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_server_residential_stock_quants" model="ir.actions.server">
+        <field name="name">Existencias por ubicación</field>
+        <field name="model_id" ref="stock.model_stock_quant"/>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+action = env['cs.residence'].action_menu_residential_stock_quants()
+        ]]></field>
+    </record>
+
+    <record id="action_server_residential_locations" model="ir.actions.server">
+        <field name="name">Ubicaciones residenciales</field>
+        <field name="model_id" ref="stock.model_stock_location"/>
+        <field name="state">code</field>
+        <field name="code"><![CDATA[
+action = env['cs.residence'].action_menu_residential_locations()
+        ]]></field>
+    </record>
+
+    <menuitem
+        id="menu_cs_residential_warehouse_root"
+        name="Almacenes residenciales"
+        parent="stock.menu_stock_inventory_control"
+        sequence="24"
+        groups="stock.group_stock_user"
+    />
+    <menuitem
+        id="menu_cs_residential_stock_quants"
+        name="Existencias por ubicación"
+        parent="menu_cs_residential_warehouse_root"
+        action="action_server_residential_stock_quants"
+        sequence="10"
+        groups="stock.group_stock_user"
+    />
+    <menuitem
+        id="menu_cs_residential_locations_tree"
+        name="Ubicaciones (árbol)"
+        parent="menu_cs_residential_warehouse_root"
+        action="action_server_residential_locations"
+        sequence="20"
+        groups="stock.group_stock_user"
+    />
+</odoo>

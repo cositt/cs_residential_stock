@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_location_form_cs_residential" model="ir.ui.view">
+        <field name="name">stock.location.form.cs.residential</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Centro Sanitario (residencial)" groups="stock.group_stock_user">
+                    <field name="cs_residence_id" readonly="1"/>
+                    <field name="cs_room_id" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
